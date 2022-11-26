@@ -6,5 +6,5 @@ jobs:
     steps:
       - name: first-step
         run: echo hello world
-      # - name: second-step
-      #   run: dotnet build .
+      - name: second-step
+        run: dotnet build .
