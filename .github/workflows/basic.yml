@@ -1,0 +1,10 @@
+name: basic-workflow
+on: workflow_dispatch
+jobs:
+  first-job:
+    runs-on: windows-latest
+    steps:
+      - name: first-step
+        run: echo hello world
+      # - name: second-step
+      #   run: dotnet build .
