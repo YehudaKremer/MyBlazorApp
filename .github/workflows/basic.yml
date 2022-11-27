@@ -4,8 +4,7 @@ jobs:
   first-job:
     runs-on: windows-latest
     steps:
-    - name: checkout
-      uses: actions/checkout
+    - uses: actions/checkout
     - name: Setup dotnet
       uses: actions/setup-dotnet@v3
       with:
