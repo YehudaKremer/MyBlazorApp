@@ -1,7 +1,7 @@
 name: basic-workflow
 on: workflow_dispatch
 jobs:
-  first-job:
+  start-site:
     runs-on: windows-latest
     steps:
       - name: Checkout Code
@@ -10,9 +10,14 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@latest
       - name: Run Project
         run: dotnet run --project MyBlazorApp
+
+  test-site:
+    runs-on: windows-latest
+    needs: start-site
+    steps:
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
       - name: Run Project Tests
         run: dotnet test MyBlazorAppTests
