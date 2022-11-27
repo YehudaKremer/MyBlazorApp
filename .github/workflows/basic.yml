@@ -4,11 +4,11 @@ jobs:
   first-job:
     runs-on: windows-latest
     steps:
-      - name: checkout
-        uses: actions/checkout
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '6.0.x'
-      - name: build project
-        run: dotnet build
+    - name: checkout
+      uses: actions/checkout
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    - name: build project
+      run: dotnet build
