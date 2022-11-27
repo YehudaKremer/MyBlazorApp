@@ -4,11 +4,15 @@ jobs:
   first-job:
     runs-on: windows-latest
     steps:
-      - name: checkout
+      - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Setup dotnet
+      - name: Setup Dotnet
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '7.0.x'
-      - name: build project
-        run: dotnet build
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
+      - name: Run Project
+        run: dotnet run --project MyBlazorApp
+      - name: Run Project Tests
+        run: dotnet test MyBlazorAppTests
