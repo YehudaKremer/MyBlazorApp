@@ -5,6 +5,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: first-step
-        run: echo hello world
-      - name: second-step
-        run: dotnet build .
+        run: |
+          echo "hello world"
+          echo "hello world again"
+      # - name: second-step
+      #   run: dotnet build .
