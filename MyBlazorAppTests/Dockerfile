@@ -1,24 +1,14 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS publish
-WORKDIR /app
-COPY *.csproj ./
-
-ENV HTTP_PROXY=http://192.168.176.80:8080
-ENV HTTPS_PROXY=http://192.168.176.80:8080
-
-RUN dotnet restore
-
-COPY . .
-RUN dotnet publish -c Release -o out
-
 FROM selenium/standalone-chrome:latest
 WORKDIR /app
-COPY --from=publish /app/out .
+COPY . .
 
-ENV HTTP_PROXY=http://192.168.176.80:8080
-ENV HTTPS_PROXY=http://192.168.176.80:8080
+# ENV HTTP_PROXY=http://192.168.176.80:8080
+# ENV HTTPS_PROXY=http://192.168.176.80:8080
 
 # install dotnet
-RUN sudo apt-get update && \
-    sudo apt-get install -y dotnet7
+RUN sudo wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN sudo dpkg -i packages-microsoft-prod.deb
+RUN sudo apt-get update
+RUN sudo apt-get install -y dotnet-sdk-7.0
 
 ENTRYPOINT ["dotnet", "test"]
