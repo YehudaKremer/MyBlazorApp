@@ -34,7 +34,7 @@ namespace MyBlazorAppTests
         [TestMethod]
         public void VerifyPageTitle()
         {
-            _driver.Navigate().GoToUrl("http://localhost:5058");
+            _driver.Navigate().GoToUrl("https://www.google.com/");
             Assert.AreEqual("Counter", _driver.Title);
         }
 
