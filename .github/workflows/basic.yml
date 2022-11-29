@@ -6,10 +6,6 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Run Project
-        run: |
-          docker build -f MyBlazorApp/Dockerfile -t my-blazor-app .
-          docker run -dp 5000:80 my-blazor-app
       - name: Setup Dotnet
         uses: actions/setup-dotnet@v3
         with:
@@ -18,6 +14,3 @@ jobs:
         uses: browser-actions/setup-chrome@latest
       - name: Run Project Tests
         run: dotnet test MyBlazorAppTests
-
-
-        #docker run -dp 5000:80 my-blazor-app 
