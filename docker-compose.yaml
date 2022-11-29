@@ -3,17 +3,17 @@ services:
   website:
     build:
       context: ./MyBlazorApp
-      args:
-        HTTP_PROXY: http://192.168.176.80:8080
-        HTTPS_PROXY: http://192.168.176.80:8080
+      # args:
+      #   HTTP_PROXY: http://192.168.176.80:8080
+      #   HTTPS_PROXY: http://192.168.176.80:8080
     ports:
       - '5000:80'
   tests:
     build: 
-      context: ./E2eTests
-      args:
-        HTTP_PROXY: http://192.168.176.80:8080
-        HTTPS_PROXY: http://192.168.176.80:8080
+      context: ./MyBlazorAppTests
+      # args:
+      #   HTTP_PROXY: http://192.168.176.80:8080
+      #   HTTPS_PROXY: http://192.168.176.80:8080
     depends_on:
       - website
     stdin_open: true

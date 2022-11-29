@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /app
 
-ENV HTTP_PROXY=http://192.168.176.80:8080
-ENV HTTPS_PROXY=http://192.168.176.80:8080
+# ENV HTTP_PROXY=http://192.168.176.80:8080
+# ENV HTTPS_PROXY=http://192.168.176.80:8080
 
 # Copy csproj and restore as distinct layers
 COPY *.csproj ./

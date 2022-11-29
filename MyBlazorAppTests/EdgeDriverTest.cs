@@ -1,16 +1,18 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 
-namespace E2eTests
+namespace MyBlazorAppTests
 {
-    public class Tests
+    [TestClass]
+    public class EdgeDriverTest
     {
         private static IWebDriver _driver;
 
-        [SetUp]
-        public void Setup()
+        [ClassInitialize]
+        public static void ClassInitialize(TestContext context)
         {
             ChromeOptions options = new ChromeOptions();
             options.AddArguments("--ignore-certificate-errors", "--headless");
@@ -29,14 +31,14 @@ namespace E2eTests
             _driver = new ChromeDriver(options);
         }
 
-        [Test]
-        public void Test1()
+        [TestMethod]
+        public void VerifyPageTitle()
         {
             _driver.Navigate().GoToUrl("http://website");
-            Assert.That(_driver.Title, Is.EqualTo("Counter"));
+            Assert.AreEqual("Counter", _driver.Title);
         }
 
-        [TearDown]
+        [ClassCleanup]
         public static void ClassCleanup()
         {
             _driver.Quit();
